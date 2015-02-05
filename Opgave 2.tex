@@ -1,0 +1,81 @@
+4% Dokumentklassen sættes til memoir.
+% Manual: http://ctan.org/tex-archive/macros/latex/contrib/memoir/memman.pdf
+\documentclass[a4paper,oneside,article]{article}
+
+% Danske udtryk (fx figur og tabel) samt dansk orddeling og fonte med
+% danske tegn. Hvis LaTeX brokker sig over æ, ø og å skal du udskifte
+% "utf8" med "latin1" eller "applemac".
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+
+% Matematisk udtryk, fede symboler, theoremer og fancy ting (fx kædebrøker)
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+% Kodelisting. Husk at læse manualen hvis du vil lave fancy ting.
+% Manual: http://mirror.ctan.org/macros/latex/contrib/listings/listings.pdf
+\usepackage{listings}
+\usepackage{pxfonts}
+\lstset{language=C,
+	basicstyle=\ttfamily,
+	keywordstyle=\bfseries,
+	showstringspaces=false,
+	morekeywords={include, printf}}
+% Fancy ting med enheder og datatabeller. Læs manualen til pakken
+% Manual: http://www.ctan.org/tex-archive/macros/latex/contrib/siunitx/siunitx.pdf
+\usepackage{siunitx}
+
+% Indsættelse af grafik.
+\usepackage{graphicx}
+
+\begin{document}
+	
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+	
+\begin{center}
+	
+
+\textsc{\LARGE Ingeniørhøjskolen Aarhus}\\[1.5cm] %
+\normalsize\emph{18. marts 2015}\\[1.0cm] 
+\textsc{\large Digital systemdesign}\\[2.5cm] 
+\HRule \\[0.4cm]
+\huge \bfseries \textsc{Journal 1}\\[0.4cm]
+\HRule \\[1.5cm]
+\vspace{1 in}
+
+\vspace{2 in}
+
+
+\vfill % Fill the rest of the page with whitespace
+\end{center} % Center everything on the page
+\section{Opgave 2}
+Opgave 2 omhandler half- og full-adders\\
+
+\subsection{Opgave ?}
+Architecture body i VHDL kan skrives på tre forskellige måder; dataflow, behavioral og structural. \\
+Half-adder beskrives i Dataflow style ved hjælp af direkte implementering af logiske gates. Skrivemåden gør det nemt at overføre programmet direkte til hardware og de logiske gates. \\
+I Behavioral style opskrives half-adderen ved brug af if/else statements. Dette giver en god forståelse af selve half-adderens funktion, men man kan ikke ud fra koden overføre det til logiske gates. \\
+I structural style laves et miks af de to ovenstående, da der først defineres en funktion for hver logisk gate som det ses i dataflow style, og derefter implementeres funktionerne i halfadder entity’en. Denne style er god at bruge, hvis man skal implementere en funktion flere gange.\\
+
+
+\centering{Kode 1}
+\begin{lstlisting}
+LIBRARY ieee ;
+USE ieee.std_logic_1164.all ;
+ENTITY light IS
+PORT ( x1, x2 :
+
+ IN STD_LOGIC ;
+f : OUT STD_LOGIC ) ;
+END light ;
+
+ARCHITECTURE LogicFunction OF light IS
+
+BEGIN
+f <= (x1 AND NOT x2) OR (NOT x1 AND x2);
+END LogicFunction ;
+\end{lstlisting}
+\end{document}
